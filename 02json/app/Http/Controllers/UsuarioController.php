@@ -44,9 +44,13 @@ class UsuarioController extends Controller{
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, string $id){
+        $usuario = collect($this->usuarios)->firstWhere('id', $id);
+        if ($usuario) {
+            $usuario['name'] = $request->input('name');
+            return response()->json($usuario);
+        }
+        return response()->json(['message' => 'Usuario no encontrado'], 404);
     }
 
     /**
@@ -54,6 +58,13 @@ class UsuarioController extends Controller{
      */
     public function destroy(string $id)
     {
-        //
+        $usuario = collect($this->usuarios)->firstWhere('id', $id);
+        if ($usuario) {
+            $this->usuarios = collect($this->usuarios)->reject(function ($u) use ($id) {
+                return $u['id'] == $id;
+            })->values()->all();
+            return response()->json(['message' => 'Usuario eliminado']);
+        }
+        return response()->json(['message' => 'Usuario no encontrado'], 404);
     }
 }

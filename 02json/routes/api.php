@@ -7,18 +7,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('usuarios', [App\Http\Controllers\UsuarioController::class, 'index']);
+// Route::get('usuarios', [App\Http\Controllers\UsuarioController::class, 'index']);
 
-Route::post('usuarios', [App\Http\Controllers\UsuarioController::class, 'store']);
+// Route::post('usuarios', [App\Http\Controllers\UsuarioController::class, 'store']);
 
-Route::get('usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'show']);
+// Route::get('usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'show']);
 
-Route::put('usuarios', function () {
-    echo "Soy Put";
-});
-Route::delete('usuarios', function () {
-    echo "Soy Delete";
-});
-Route::patch('usuarios', function () {
-    echo "Soy Patch";
-});
+// Route::put('usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'update']);
+
+// Route::delete('usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'destroy']);
+
+Route::apiResource('usuarios', App\Http\Controllers\UsuarioController::class);
