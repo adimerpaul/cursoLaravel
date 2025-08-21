@@ -22,7 +22,7 @@ class UsuarioController extends Controller{
     public function store(Request $request){
         try {
             $request->validate([
-                'name' => 'required|string|max:255|min:5',
+                'name' => 'required|string|max:10|min:5',
             ]);
             
             $nuevoUsuario = [
