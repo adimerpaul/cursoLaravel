@@ -16,6 +16,17 @@ class UserController extends Controller
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
         $user->save();
+    
+        // if (request()->hasFile('photo')) {
+        //     // save store
+        // }
+        DB::table('users')->insert([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password')),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
         return $user;
     }
     function update($id, Request $request){
