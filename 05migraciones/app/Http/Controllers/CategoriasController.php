@@ -30,6 +30,19 @@ class CategoriasController extends Controller{
         DB::beginTransaction();
         try {
             // Código que puede fallar
+            $sale = DB::table('sales')->insert([
+                'product_id' => 1,
+                'quantity' => 2,
+                'price' => 100
+            ]);
+            $producto = DB::table('productos')->insert([
+                'nombre' => 'Producto 1',
+                'precio' => 100
+            ]);
+            $categoria = DB::table('categorias')->insert([
+                'nombre' => 'Categoria 1',
+                'descripcion' => 'Descripcion de Categoria 1'
+            ]);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
