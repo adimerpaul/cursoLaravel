@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo');
+            $table->string('razon_social');
+            $table->string('nro_identificacion');
+            $table->integer('telefono')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('correo')->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
