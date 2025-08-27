@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="print-button">Imprimir</button>
+    <form method="POST" id="cliente-form">
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required><br>
+
+        <label for="razon_social">Razon Social:</label>
+        <input type="text" id="razon_social" name="razon_social" required><br>
+
+        <label for="nro_identificacion">Nro Identificacion:</label>
+        <input type="text" id="nro_identificacion" name="nro_identificacion" required><br>
+
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required><br>
+
+        <label for="direccion">Direccion:</label>
+        <input type="text" id="direccion" name="direccion" required><br>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required><br>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Razon Social</th>
+                <th>Nro Identificacion</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Correo</th>
+                <th>Estado</th>
+                <th>Notas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="clientes-body">
+        </tbody>
+    </table>
+
+<script>
+window.onload = function() {
+    idClientesBody = document.getElementById('clientes-body');
+    clienteForm = document.getElementById('cliente-form');
+    printButton = document.getElementById('print-button');
+    
+    printButton.onclick = function() {
+        window.print();
+    };
+
+    window.deleteCliente = function (id) {
+        console.log('Deleting client with ID:', id);
+        fetch(`http://localhost:8000/api/clientes/${id}`, {
+            method: 'DELETE'
+        }).then(response => {
+            if (response.ok) {
+                console.log('Client deleted successfully');
+                getClientes();
+            } else {
+                console.error('Failed to delete client');
+            }
+        });
+    };
+
+    function getClientes() {
+        fetch('http://localhost:8000/api/clientes')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                idClientesBody.innerHTML = '';
+                data.forEach(cliente => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${cliente.id}</td>
+                        <td>${cliente.tipo}</td>
+                        <td>${cliente.razon_social}</td>
+                        <td>${cliente.nro_identificacion}</td>
+                        <td>${cliente.telefono}</td>
+                        <td>${cliente.direccion}</td>
+                        <td>${cliente.correo}</td>
+                        <td>${cliente.estado}</td>
+                        <td>
+                            <ul>
+                                ${cliente.notas.map(nota => `<li>${nota.titulo}</li>`).join('')}
+                            </ul>
+                        </td>
+                        <td>
+                            <button onclick="editCliente(${cliente.id})">Edit</button>
+                            <button onclick="deleteCliente(${cliente.id})">Delete</button>
+                        </td>
+                    `;
+                    idClientesBody.appendChild(row);
+                });
+            });
+    }
+    getClientes();
+
+    clienteForm.onsubmit = function(event) {
+        event.preventDefault();
+        const formData = new FormData(clienteForm);
+        fetch('http://localhost:8000/api/clientes', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Clear the form
+            clienteForm.reset();
+            // Refresh the client list
+            getClientes();
+        });
+    };
+};
+</script>
+</body>
+</html>
