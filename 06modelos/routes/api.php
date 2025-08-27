@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/clientes', [App\Http\Controllers\ClienteController::class, 'index']);
 Route::post('/clientes', [App\Http\Controllers\ClienteController::class, 'store']);
+Route::put('/clientes/{id}', [App\Http\Controllers\ClienteController::class, 'update']);
 Route::delete('/clientes/{id}', [App\Http\Controllers\ClienteController::class, 'destroy']);
