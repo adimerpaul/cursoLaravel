@@ -19,4 +19,8 @@ class Cliente extends Model
         'correo',
         'estado',
     ];
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }
 }

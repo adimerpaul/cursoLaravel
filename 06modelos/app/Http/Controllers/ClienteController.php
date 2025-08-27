@@ -8,7 +8,7 @@ use App\Models\Cliente;
 class ClienteController extends Controller
 {
     function index() {
-        return Cliente::all();
+        return Cliente::with('notas')->get();
     }
     function store(Request $request) {
         $cliente = Cliente::create($request->all());
