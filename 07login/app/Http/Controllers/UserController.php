@@ -25,7 +25,7 @@ class UserController extends Controller{
     }
     function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out'], 200);
+        return response()->json(['message' => 'Logged out', 'success' => true]);
     }
     function login(Request $request){
         $validated = $request->validate([

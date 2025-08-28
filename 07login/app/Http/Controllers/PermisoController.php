@@ -17,5 +17,9 @@ class PermisoController extends Controller{
 
         return response()->json(['permiso' => $permiso], 201);
     }
+    function index(Request $request){
+        $permisos = \App\Models\Permiso::all();
+        return response()->json(['permisos' => $permisos], 200);
+    }
 
 }
