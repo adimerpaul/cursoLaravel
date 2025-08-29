@@ -11,10 +11,12 @@ class UploadController extends Controller{
         ]);
 
         if ($request->file('file')->isValid()) {
-            // $path = $request->file('file')->store('uploads', 'public'); upload public
-            $filename = time().'_'.$request->file('file')->getClientOriginalName();
-            $request->file('file')->move(public_path('images/'), $filename);
-            return response()->json(['message' => 'Archivo subido exitosamente', 'path' => $filename], 200);
+            $path = $request->file('file')->store('uploads', 'public');
+            return response()->json(['message' => 'Archivo subido exitosamente', 'path' => $path], 200);
+
+            // $filename = time().'_'.$request->file('file')->getClientOriginalName();
+            // $request->file('file')->move(public_path('images/'), $filename);
+            // return response()->json(['message' => 'Archivo subido exitosamente', 'path' => $filename], 200);
         }
 
         return response()->json(['message' => 'Error al subir el archivo'], 400);
