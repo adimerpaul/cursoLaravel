@@ -7,7 +7,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    function index() {
-        return User::all();
+    function index(Request $request) {
+        return User::paginate(10);
     }
 }
