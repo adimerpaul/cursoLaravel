@@ -10,3 +10,8 @@ Route::get('/', function () {
 Route::get('export', [UsersController::class, 'export']);
 Route::get('import', [UsersController::class, 'import']);
 
+
+Route::get('test', [UsersController::class, 'test']);
+
+Route::get('qr', [UsersController::class, 'qr']);
+
