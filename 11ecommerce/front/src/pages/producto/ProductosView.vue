@@ -1,5 +1,10 @@
 <template>
-  <h1>Productos</h1>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span style="font-size: 1.5rem;font-weight: bold;">Productos</span>
+    <button @click="crearProducto" style="padding: 0.5rem 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      Crear Producto
+    </button>
+  </div>
   <p>Lista de productos disponibles:</p>
   <table>
     <thead>
@@ -50,6 +55,9 @@ export default {
         .catch((error) => {
           console.error('Error fetching products:', error);
         });
+    },
+    crearProducto() {
+      this.$router.push('/productos/crear');
     },
   },
 };
