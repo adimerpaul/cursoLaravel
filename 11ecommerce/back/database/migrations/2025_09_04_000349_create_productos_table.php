@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('unidad_medida', 10, 2);
             $table->string('marca')->nullable();
             $table->decimal('precio_venta_actual', 10, 2);
-            $table->string('imagen')->nullable();
+            $table->text('imagen')->nullable();
             $table->boolean('activo')->default(true);
             $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
             $table->timestamps();

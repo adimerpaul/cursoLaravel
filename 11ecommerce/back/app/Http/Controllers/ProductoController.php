@@ -11,9 +11,15 @@ class ProductoController extends Controller
         return $productos;
     }
     function store(Request $request) {
+        // $imagen = $request->file('imagen');
+        // $ruta = $imagen->store('public/imagenes');
+        // $nombreArchivo = basename($ruta);
+        //  $request->file('file')->store('uploads', 'public');
         $imagen = $request->file('imagen');
-        $ruta = $imagen->store('public/imagenes');
-        $nombreArchivo = basename($ruta);
+        $nombreArchivo = time() . '_' . $imagen->getClientOriginalName();
+        $imagen->move(public_path('imagenes'), $nombreArchivo);
+        // $imageBase64 = base64_encode(file_get_contents(public_path('imagenes/' . $nombreArchivo)));
+
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
