@@ -13,6 +13,7 @@
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Precio</th>
+        <th>Imagen</th>
         <th>Categoria</th>
         <th>Opciones</th>
       </tr>
@@ -23,10 +24,14 @@
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.descripcion }}</td>
         <td>{{ producto.precio_venta_actual }}</td>
+        <td>
+            <img :src="`http://localhost:8000/imagenes/${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/>
+             <!-- <img :src="`data:image/jpeg;base64,${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/> -->
+        </td>
         <td>{{ producto.categoria.nombre }}</td>
         <td>
           <!-- <button @click="editarProducto(producto.id)">Editar</button> -->
-          <!-- <button @click="eliminarProducto(producto.id)">Eliminar</button> -->
+          <button @click="eliminarProducto(producto.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -60,6 +65,17 @@ export default {
     },
     crearProducto() {
       this.$router.push('/productos/crear');
+    },
+    eliminarProducto(id) {
+      if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+        axios.delete(`http://localhost:8000/api/productos/${id}`)
+          .then(() => {
+            this.productosGet();
+          })
+          .catch((error) => {
+            console.error('Error deleting product:', error);
+          });
+      }
     },
   },
 };
