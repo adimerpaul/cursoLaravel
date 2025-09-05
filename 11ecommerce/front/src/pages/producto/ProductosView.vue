@@ -13,6 +13,7 @@
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Precio</th>
+        <th>Categoria</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.descripcion }}</td>
         <td>{{ producto.precio_venta_actual }}</td>
+        <td>{{ producto.categoria.nombre }}</td>
         <td>
           <!-- <button @click="editarProducto(producto.id)">Editar</button> -->
           <!-- <button @click="eliminarProducto(producto.id)">Eliminar</button> -->
@@ -29,9 +31,9 @@
       </tr>
     </tbody>
   </table>
-  <!-- <pre>
+  <pre>
     {{ productos }}
-  </pre> -->
+  </pre>
 </template>
 <script>
 import axios from 'axios';

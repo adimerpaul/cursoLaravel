@@ -30,13 +30,13 @@
         </div>
         <div>
             <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" @change="handleFileUpload" required>
-        </div>
-        <div>
-            <label for="activo">Activo:</label>
-            <input type="checkbox" id="activo" v-model="producto.activo">
+            <input type="file" id="imagen" @change="handleFileUpload" required accept="image/*">
         </div>
         <!-- <div>
+            <label for="activo">Activo:</label>
+            <input type="checkbox" id="activo" v-model="producto.activo">
+        </div> -->
+        <div>
             <label for="categoria_id">Categoría:</label>
             <select id="categoria_id" v-model="producto.categoria_id" required>
                 <option disabled value="">Seleccione una categoría</option>
@@ -44,11 +44,15 @@
                     {{ categoria.nombre }}
                 </option>
             </select>
-        </div> -->
+        </div>
         <button type="submit">Crear Producto</button>
+        <!-- <pre>
+            {{ categorias }}
+        </pre> -->
     </form>
 </template>
 <script>
+import axios from 'axios';
 export default {
     name: 'ProductosCreate',
     data() {
@@ -64,9 +68,46 @@ export default {
                 activo: true,
                 categoria_id: null,
             },
+            categorias: [],
         };
     },
+    mounted() {
+        this.categoriasGet();
+    },
     methods: {
+        handleFileUpload(event) {
+            const file = event.target.files[0];
+            this.producto.imagen = file;
+        },
+        async categoriasGet() {
+            axios.get('http://localhost:8000/api/categorias')
+                .then((response) => {
+                    this.categorias = response.data;
+                })
+                .catch((error) => {
+                    console.error('Error fetching categories:', error);
+                });
+        },
+        crearProducto() {
+            const formData = new FormData();
+            for (const key in this.producto) {
+                formData.append(key, this.producto[key]);
+            }
+            formData.append('imagen', this.producto.imagen);
+            axios.post('http://localhost:8000/api/productos', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+                .then((response) => {
+                    console.log('Producto creado:', response.data);
+                    // Resetear el formulario
+                    this.$router.push('/productos');
+                })
+                .catch((error) => {
+                    console.error('Error creando producto:', error);
+                });
+        },
     },
 };
 </script>
