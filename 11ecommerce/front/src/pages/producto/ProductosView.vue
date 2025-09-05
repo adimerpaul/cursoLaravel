@@ -30,15 +30,15 @@
         </td>
         <td>{{ producto.categoria.nombre }}</td>
         <td>
-          <!-- <button @click="editarProducto(producto.id)">Editar</button> -->
+          <button @click="editarProducto(producto.id)">Editar</button>
           <button @click="eliminarProducto(producto.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <pre>
+  <!-- <pre>
     {{ productos }}
-  </pre>
+  </pre> -->
 </template>
 <script>
 import axios from 'axios';
@@ -53,6 +53,9 @@ export default {
     this.productosGet();
   },
   methods: {
+    editarProducto(id) {
+      this.$router.push(`/productos/editar/${id}`);
+    },
     async productosGet() {
       axios.get('http://localhost:8000/api/productos')
         .then((response) => {

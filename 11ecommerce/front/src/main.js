@@ -12,6 +12,7 @@ const routes = [
   { path: '/about', component: AboutView },
   { path: '/productos', component: ProductosView },
   { path: '/productos/crear', component: () => import('./pages/producto/ProductosCreate.vue') },
+  { path: '/productos/editar/:id', component: () => import('./pages/producto/ProductosEditar.vue') },
 ]
 
 const router = createRouter({
