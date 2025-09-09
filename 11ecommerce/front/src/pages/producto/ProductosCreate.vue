@@ -49,6 +49,26 @@
         <!-- <pre>
             {{ categorias }}
         </pre> -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- Crear Categoria -->
+        <h2>Crear Categoria</h2>
+        <form @submit.prevent="crearCategoria">
+            <div>
+                <label for="nombre`">Nombre de la Categoría:</label>
+                <input type="text" id="nombre`" v-model="categoria.nombre" required>
+            </div>
+            <div>
+                <label for="descripcion`">Descripción de la Categoría:</label>
+                <textarea id="descripcion`" v-model="categoria.descripcion" required></textarea>
+            </div>
+            <button type="submit">Crear Categoría</button>
+        </form>
     </form>
 </template>
 <script>
@@ -69,12 +89,28 @@ export default {
                 categoria_id: null,
             },
             categorias: [],
+            categoria: {
+                nombre: '',
+                descripcion: '',
+            },
         };
     },
     mounted() {
         this.categoriasGet();
     },
     methods: {
+        crearCategoria() {
+            axios.post('http://localhost:8000/api/categorias', this.categoria)
+                .then((response) => {
+                    console.log('Categoría creada:', response.data);
+                    this.categoria.nombre = '';
+                    this.categoria.descripcion = '';
+                    this.categoriasGet(); // Refrescar la lista de categorías
+                })
+                .catch((error) => {
+                    console.error('Error creando categoría:', error);
+                });
+        },
         handleFileUpload(event) {
             const file = event.target.files[0];
             this.producto.imagen = file;

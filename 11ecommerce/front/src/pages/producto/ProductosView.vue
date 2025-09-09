@@ -6,6 +6,25 @@
     </button>
   </div>
   <p>Lista de productos disponibles:</p>
+  <input 
+    type="text" 
+    v-model="search" 
+    placeholder="Buscar productos..." 
+    @input="productosGet" 
+    style="margin-bottom: 1rem; padding: 0.5rem; width: 100%; box-sizing: border-box;"
+  />
+  <div style="margin-bottom: 1rem;">
+    <button 
+      @click="pagination.currentPage -- ; productosGet()"
+    >
+      Anterior
+    </button>
+    <button 
+      @click="pagination.currentPage++, productosGet()"
+    >
+      Siguiente
+    </button>
+  </div>
   <table>
     <thead>
       <tr>
@@ -47,6 +66,10 @@ export default {
   data() {
     return {
       productos: [],
+      search: '',
+      pagination: {
+        currentPage: 1
+      }
     };
   },
   mounted() {
@@ -57,10 +80,9 @@ export default {
       this.$router.push(`/productos/editar/${id}`);
     },
     async productosGet() {
-      axios.get('http://localhost:8000/api/productos')
+      axios.get('http://localhost:8000/api/productos?limit=10'+'&page='+this.pagination.currentPage+'&search='+this.search)
         .then((response) => {
-          this.productos = response.data;
-        //   console.log(this.productos);
+          this.productos = response.data.data;
         })
         .catch((error) => {
           console.error('Error fetching products:', error);

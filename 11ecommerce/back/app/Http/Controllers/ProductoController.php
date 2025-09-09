@@ -6,8 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 class ProductoController extends Controller
 {
-    function index() {
-        $productos = Producto::with('categoria')->get();
+    function index(Request $request) {
+        $limit = $request->query('limit', 10);
+        $search = $request->query('search', '');
+        if ($search) {
+            $productos = Producto::with('categoria')
+                ->where('nombre', 'like', '%' . $search . '%')
+                ->orWhere('descripcion', 'like', '%' . $search . '%')
+                ->orWhere('marca', 'like', '%' . $search . '%')
+                ->paginate($limit);
+            return $productos;
+        }
+        $productos = Producto::with('categoria')->paginate($limit);
         return $productos;
     }
     function store(Request $request) {

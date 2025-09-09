@@ -46,5 +46,19 @@ class DatabaseSeeder extends Seeder
             'activo' => true,
             'categoria_id' => 1
         ]);
+        // create productos fake 1000
+        for ($i = 1; $i <= 1000; $i++) {
+            Producto::create([
+                'nombre' => 'Producto ' . $i,
+                'descripcion' => 'Descripción del producto ' . $i,
+                'codigo_barra' => '000000000' . $i,
+                'unidad_medida' => 'unidad',
+                'marca' => 'Marca ' . $i,
+                'precio_venta_actual' => rand(10, 500),
+                'imagen' => null,
+                'activo' => true,
+                'categoria_id' => rand(1, 3)
+            ]);
+        }
     }
 }

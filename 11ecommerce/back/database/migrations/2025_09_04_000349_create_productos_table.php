@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion')->nullable();
-            $table->string('codigo_barra', 10, 2);
+            $table->string('codigo_barra');
             $table->string('unidad_medida', 10, 2);
             $table->string('marca')->nullable();
             $table->decimal('precio_venta_actual', 10, 2);
