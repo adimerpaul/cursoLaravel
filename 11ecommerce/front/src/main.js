@@ -13,6 +13,7 @@ const routes = [
   { path: '/productos', component: ProductosView },
   { path: '/productos/crear', component: () => import('./pages/producto/ProductosCreate.vue') },
   { path: '/productos/editar/:id', component: () => import('./pages/producto/ProductosEditar.vue') },
+  { path: '/usuarios', component: () => import('./pages/usuarios/UserView.vue') },
 ]
 
 const router = createRouter({

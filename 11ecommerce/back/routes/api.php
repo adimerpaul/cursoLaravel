@@ -15,3 +15,5 @@ Route::delete('/productos/{id}', [App\Http\Controllers\ProductoController::class
 
 Route::get('/categorias', [App\Http\Controllers\CategoriaController::class, 'index']);
 Route::post('/categorias', [App\Http\Controllers\CategoriaController::class, 'store']);
+
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index']);

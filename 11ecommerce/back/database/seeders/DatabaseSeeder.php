@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
@@ -47,18 +47,18 @@ class DatabaseSeeder extends Seeder
             'categoria_id' => 1
         ]);
         // create productos fake 1000
-        for ($i = 1; $i <= 1000; $i++) {
-            Producto::create([
-                'nombre' => 'Producto ' . $i,
-                'descripcion' => 'Descripción del producto ' . $i,
-                'codigo_barra' => '000000000' . $i,
-                'unidad_medida' => 'unidad',
-                'marca' => 'Marca ' . $i,
-                'precio_venta_actual' => rand(10, 500),
-                'imagen' => null,
-                'activo' => true,
-                'categoria_id' => rand(1, 3)
-            ]);
-        }
+        // for ($i = 1; $i <= 1000; $i++) {
+        //     Producto::create([
+        //         'nombre' => 'Producto ' . $i,
+        //         'descripcion' => 'Descripción del producto ' . $i,
+        //         'codigo_barra' => '000000000' . $i,
+        //         'unidad_medida' => 'unidad',
+        //         'marca' => 'Marca ' . $i,
+        //         'precio_venta_actual' => rand(10, 500),
+        //         'imagen' => null,
+        //         'activo' => true,
+        //         'categoria_id' => rand(1, 3)
+        //     ]);
+        // }
     }
 }
