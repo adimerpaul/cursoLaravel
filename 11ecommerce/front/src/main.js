@@ -14,6 +14,7 @@ const routes = [
   { path: '/productos/crear', component: () => import('./pages/producto/ProductosCreate.vue') },
   { path: '/productos/editar/:id', component: () => import('./pages/producto/ProductosEditar.vue') },
   { path: '/usuarios', component: () => import('./pages/usuarios/UserView.vue') },
+  { path: '/usuarios/crear', component: () => import('./pages/usuarios/UserCreate.vue') },
   { path: '/usuarios/:id', component: () => import('./pages/usuarios/UserShow.vue') },
 ]
 

@@ -18,3 +18,4 @@ Route::post('/categorias', [App\Http\Controllers\CategoriaController::class, 'st
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('/users/{id}', [App\Http\Controllers\UserController::class, 'show']);
+Route::post('/users', [App\Http\Controllers\UserController::class, 'store']);

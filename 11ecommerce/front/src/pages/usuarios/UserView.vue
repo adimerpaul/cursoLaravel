@@ -1,5 +1,8 @@
 <template>
     <h1>Usuarios</h1>
+    <button @click="createUser" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Crear Usuario
+    </button>
     <table>
         <thead>
         <tr>
@@ -45,6 +48,9 @@ export default {
         },
         viewUser(id) {
             this.$router.push('/usuarios/' + id);
+        },
+        createUser() {
+            this.$router.push('/usuarios/crear');
         },
     }
 };
