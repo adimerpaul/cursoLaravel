@@ -10,4 +10,7 @@ class UserController extends Controller
     function index() {
         return User::all();
     }
+    function show($id) {
+        return User::find($id);
+    }
 }
