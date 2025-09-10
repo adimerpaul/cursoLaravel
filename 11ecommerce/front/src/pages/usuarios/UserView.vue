@@ -39,6 +39,18 @@ export default {
         this.fetchUsers();
     },
     methods: {
+        deleteUser(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+                axios.delete(`http://localhost:8000/api/users/${id}`)
+                    .then(response => {
+                        alert("Usuario eliminado con éxito");
+                        this.fetchUsers(); // Refrescar la lista de usuarios
+                    })
+                    .catch(error => {
+                        console.error("Error deleting user:", error);
+                    });
+            }
+        },
         editUser(id) {
             this.$router.push('/usuarios/editar/' + id);
         },

@@ -26,7 +26,7 @@
         </div>
         <div>
             <label for="precio_venta_actual">Precio de Venta Actual:</label>
-            <input type="number" id="precio_venta_actual" v-model="producto.precio_venta_actual" required>
+            <input type="number" id="precio_venta_actual" v-model="producto.precio_venta_actual" step="0.01" required>
         </div>
         <div>
             <label for="imagen">Imagen:</label>
