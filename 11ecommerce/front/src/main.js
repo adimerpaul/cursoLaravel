@@ -16,6 +16,7 @@ const routes = [
   { path: '/usuarios', component: () => import('./pages/usuarios/UserView.vue') },
   { path: '/usuarios/crear', component: () => import('./pages/usuarios/UserCreate.vue') },
   { path: '/usuarios/:id', component: () => import('./pages/usuarios/UserShow.vue') },
+  { path: '/usuarios/editar/:id', component: () => import('./pages/usuarios/UserEdit.vue') },
 ]
 
 const router = createRouter({

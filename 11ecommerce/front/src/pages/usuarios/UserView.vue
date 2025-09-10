@@ -39,6 +39,9 @@ export default {
         this.fetchUsers();
     },
     methods: {
+        editUser(id) {
+            this.$router.push('/usuarios/editar/' + id);
+        },
         async fetchUsers() {
             axios.get('http://localhost:8000/api/users').then(response => {
                 this.users = response.data;
