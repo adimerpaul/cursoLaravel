@@ -17,6 +17,7 @@ const routes = [
   { path: '/usuarios/crear', component: () => import('./pages/usuarios/UserCreate.vue') },
   { path: '/usuarios/:id', component: () => import('./pages/usuarios/UserShow.vue') },
   { path: '/usuarios/editar/:id', component: () => import('./pages/usuarios/UserEdit.vue') },
+  { path: '/login', component: () => import('./pages/auth/Login.vue') }
 ]
 
 const router = createRouter({

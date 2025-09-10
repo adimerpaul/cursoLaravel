@@ -5,6 +5,7 @@
     <RouterLink to="/">Principal</RouterLink>
     <RouterLink to="/productos">Productos</RouterLink>
     <RouterLink to="/usuarios">Usuarios</RouterLink>
+    <RouterLink to="/login">Login</RouterLink>
   </nav>
   <main>
     <RouterView />
