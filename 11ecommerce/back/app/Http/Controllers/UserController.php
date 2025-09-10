@@ -32,4 +32,9 @@ class UserController extends Controller
         $user->save();
         return $user;
     }
+    function destroy($id) {
+        $user = User::find($id);
+        $user->delete();
+        return "Usuario eliminado";
+    }
 }
