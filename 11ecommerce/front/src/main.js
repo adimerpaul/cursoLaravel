@@ -18,9 +18,15 @@ const routes = [
   { path: '/usuarios/:id', component: () => import('./pages/usuarios/UserShow.vue') },
   { path: '/usuarios/editar/:id', component: () => import('./pages/usuarios/UserEdit.vue') },
   { path: '/login', component: () => import('./pages/auth/Login.vue') },
+
   { path: '/roles', component: () => import('./pages/roles/Roles.vue') },
   { path: '/roles/crear', component: () => import('./pages/roles/RolesCreate.vue') },
   { path: '/roles/:id', component: () => import('./pages/roles/RolesView.vue') },
+
+  { path: '/permisos', component: () => import('./pages/permisos/Permiso.vue') },
+  { path: '/permisos/crear', component: () => import('./pages/permisos/PermisoCreate.vue') },
+  { path: '/permisos/:id', component: () => import('./pages/permisos/PermisoView.vue') },
+
 ]
 
 const router = createRouter({

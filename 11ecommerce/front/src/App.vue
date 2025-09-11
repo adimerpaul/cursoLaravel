@@ -5,6 +5,7 @@
     <RouterLink to="/">Principal</RouterLink>
     <RouterLink to="/productos">Productos</RouterLink>
     <RouterLink to="/roles">Roles</RouterLink>
+    <RouterLink to="/permisos">Permisos</RouterLink>
     <RouterLink to="/usuarios">Usuarios</RouterLink>
     <RouterLink to="/login" v-if="!isLoggedIn"
     >Login</RouterLink>
