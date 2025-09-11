@@ -25,4 +25,13 @@ class AuthController extends Controller{
             'token' => $token
         ]);
     }
+    function profile(Request $request){
+        return $request->user();
+    }
+    function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return response([
+            'message' => 'Has cerrado sesión'
+        ]);
+    }
 }

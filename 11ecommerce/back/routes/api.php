@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index']);
+
 Route::get('/productos/{id}', [App\Http\Controllers\ProductoController::class, 'show']);
 Route::post('/productos', [App\Http\Controllers\ProductoController::class, 'store']);
 Route::post('/productos/{id}', [App\Http\Controllers\ProductoController::class, 'update']);
@@ -22,4 +22,12 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store']);
 Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update']);
 Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
 
-Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/auth/login', [App\Http\Controllers\AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/auth/profile', [App\Http\Controllers\AuthController::class, 'profile']);
+    Route::post('/auth/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+
+
+    Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index']);
+});
