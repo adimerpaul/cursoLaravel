@@ -27,7 +27,12 @@ Route::post('/auth/login', [App\Http\Controllers\AuthController::class, 'login']
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth/profile', [App\Http\Controllers\AuthController::class, 'profile']);
     Route::post('/auth/logout', [App\Http\Controllers\AuthController::class, 'logout']);
-
-
     Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index']);
+
+
+    Route::get('/roles', [App\Http\Controllers\RolController::class, 'index']);
+    Route::post('/roles', [App\Http\Controllers\RolController::class, 'store']);
+    Route::get('/roles/{id}', [App\Http\Controllers\RolController::class, 'show']);
+    Route::delete('/roles/{id}', [App\Http\Controllers\RolController::class, 'destroy']);
+
 });
