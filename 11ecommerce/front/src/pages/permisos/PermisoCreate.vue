@@ -42,11 +42,11 @@ export default {
             };
             axios.post('http://localhost:8000/api/permisos', newRol)
                 .then(response => {
-                    console.log('Rol creado:', response.data);
+                    console.log('Permiso creado:', response.data);
                     this.$router.push('/permisos');
                 })
                 .catch(error => {
-                    console.error('Error creando rol:', error);
+                    console.error('Error creando permiso:', error);
                 });
         }
     }
