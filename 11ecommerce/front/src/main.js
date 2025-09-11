@@ -17,7 +17,10 @@ const routes = [
   { path: '/usuarios/crear', component: () => import('./pages/usuarios/UserCreate.vue') },
   { path: '/usuarios/:id', component: () => import('./pages/usuarios/UserShow.vue') },
   { path: '/usuarios/editar/:id', component: () => import('./pages/usuarios/UserEdit.vue') },
-  { path: '/login', component: () => import('./pages/auth/Login.vue') }
+  { path: '/login', component: () => import('./pages/auth/Login.vue') },
+  { path: '/roles', component: () => import('./pages/roles/Roles.vue') },
+  { path: '/roles/crear', component: () => import('./pages/roles/RolesCreate.vue') },
+  { path: '/roles/:id', component: () => import('./pages/roles/RolesView.vue') },
 ]
 
 const router = createRouter({
