@@ -8,11 +8,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    function getUserRoles($id) {
+        $user = User::find($id);
+        return $user->roles;
+    }
+    function assignRole(Request $request, $id) {
+        $user = User::find($id);
+        $user->roles()->syncWithoutDetaching([$request->role_id]);
+        return $user->roles;
+    }
     function index() {
-        return User::all();
+        return User::with('roles')->get();
     }
     function show($id) {
-        return User::find($id);
+        return User::with('roles')->find($id);
     }
     function store(Request $request) {
         $user = new User;
