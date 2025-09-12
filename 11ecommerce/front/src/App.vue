@@ -7,11 +7,9 @@
     <RouterLink to="/roles">Roles</RouterLink>
     <RouterLink to="/permisos">Permisos</RouterLink>
     <RouterLink to="/usuarios">Usuarios</RouterLink>
-    <RouterLink to="/login" v-if="!isLoggedIn"
-    >Login</RouterLink>
-    <span style="color: white;cursor: pointer;" @click="salir()"
-    v-if="isLoggedIn"
-    >Logout</span>
+    <RouterLink to="/almacenes">Almacenes</RouterLink>
+    <RouterLink to="/login" v-if="!isLoggedIn">Login</RouterLink>
+    <span style="color: white;cursor: pointer;" @click="salir()" v-if="isLoggedIn">Logout</span>
   </nav>
   <main>
     <RouterView />

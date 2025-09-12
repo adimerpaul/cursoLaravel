@@ -27,6 +27,8 @@ const routes = [
   { path: '/permisos/crear', component: () => import('./pages/permisos/PermisoCreate.vue') },
   { path: '/permisos/:id', component: () => import('./pages/permisos/PermisoView.vue') },
 
+  { path: '/almacenes', component: () => import('./pages/almacenes/Almacen.vue') },
+
 ]
 
 const router = createRouter({

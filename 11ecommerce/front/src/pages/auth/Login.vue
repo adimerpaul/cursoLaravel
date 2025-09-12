@@ -32,6 +32,7 @@ export default {
             .then(response => {
                 console.log('Login successful:', response.data);
                 localStorage.setItem('token', response.data.token);
+                localStorage.setItem('permisos', JSON.stringify(response.data.permisos));
                 this.$router.push('/');
             })
             .catch(error => {

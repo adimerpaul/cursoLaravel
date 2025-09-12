@@ -38,10 +38,13 @@ export default {
     name: "UserView",
     data() {
         return {
-            users: []
+            users: [],
+            permisos: []
         };
     },
     mounted() {
+        this.permisos = JSON.parse(localStorage.getItem('permisos')) || [];
+        console.log("Permisos cargados desde localStorage:", this.permisos);
         this.fetchUsers();
     },
     methods: {
@@ -61,7 +64,16 @@ export default {
             this.$router.push('/usuarios/editar/' + id);
         },
         async fetchUsers() {
-            axios.get('http://localhost:8000/api/users').then(response => {
+            if (!this.permisos.includes('view_user')) {
+                alert("No tienes permiso para ver los usuarios.");
+                return;
+            }
+            const token = localStorage.getItem('token');
+            axios.get('http://localhost:8000/api/users', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(response => {
                 this.users = response.data;
             }).catch(error => {
                 console.error("There was an error fetching the users!", error);

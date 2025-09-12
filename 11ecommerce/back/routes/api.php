@@ -50,4 +50,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/roles/{id}/permisos', [App\Http\Controllers\RolController::class, 'getRolePermisos']);
     Route::post('/roles/{id}/permisos', [App\Http\Controllers\RolController::class, 'assignPermisoToRole']);
 
+    Route::get('/almacenes', [App\Http\Controllers\AlmacenController::class, 'index']);
+
 });

@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Sucursal;
+use App\Models\Almacen;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -97,6 +100,42 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id
             ]);
         }
+
+        // Create sucursales
+        Sucursal::create([
+            'nombre' => 'Sucursal 1',
+            'direccion' => 'Calle 1',
+            'telefono' => '123456789',
+            'ciudad' => 'Ciudad 1'
+        ]);
+        Sucursal::create([
+            'nombre' => 'Sucursal 2',
+            'direccion' => 'Calle 2',
+            'telefono' => '987654321',
+            'ciudad' => 'Ciudad 2'
+        ]);
+
+        // Create almacenes
+        Almacen::create([
+            'nombre' => 'Almacen 1',
+            'codigo' => 'ALM001',
+            'descripcion' => 'Descripción del Almacen 1',
+            'sucursal_id' => 1
+        ]);
+        Almacen::create([
+            'nombre' => 'Almacen 2',
+            'codigo' => 'ALM002',
+            'descripcion' => 'Descripción del Almacen 2',
+            'sucursal_id' => 2
+        ]);
+
+        DB::table('sucursal_user')->insert([
+            'sucursal_id' => 1,
+            'user_id' => 1,
+            'role_id' => \DB::table('roles')->where('nombre', 'admin')->value('id'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
         // create productos fake 1000
         // for ($i = 1; $i <= 1000; $i++) {
