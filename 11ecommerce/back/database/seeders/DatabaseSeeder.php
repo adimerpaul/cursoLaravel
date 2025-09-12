@@ -137,6 +137,33 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+
+        // clientes
+        DB::table('clientes')->insert([
+            'tipo' => 'natural',
+            'razon_social' => 'Juan Perez',
+            'nro_identificacion' => '12345678',
+            'telefono' => '555-1234',
+            'direccion' => 'Calle Falsa 123',
+            'correo' => 'juan.perez@example.com'
+        ]);
+        DB::table('clientes')->insert([
+            'tipo' => 'juridica',
+            'razon_social' => 'Empresa XYZ S.A.',
+            'nro_identificacion' => '87654321',
+            'telefono' => '555-5678',
+            'direccion' => 'Avenida Siempre Viva 456',
+            'correo' => 'contacto@empresaxyz.com'
+        ]);
+        DB::table('clientes')->insert([
+            'tipo' => 'juridica',
+            'razon_social' => 'Empresa ABC S.A.',
+            'nro_identificacion' => '12345679',
+            'telefono' => '555-8765',
+            'direccion' => 'Avenida Siempre Viva 123',
+            'correo' => 'contacto@empresaabc.com'
+        ]);
+
         // create productos fake 1000
         // for ($i = 1; $i <= 1000; $i++) {
         //     Producto::create([
