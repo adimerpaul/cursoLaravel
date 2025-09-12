@@ -20,13 +20,19 @@ class AuthController extends Controller{
             ], 404);
         }
         $token = $user->createToken('web')->plainTextToken;
+        $roles = $user->roles()->with('permisos')->get();
+        $permisos = $roles->flatMap->permisos->pluck('name')->unique();
         return response([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
+            'permisos' => $permisos
         ]);
     }
     function profile(Request $request){
-        return $request->user();
+        $user = $request->user();
+        $user->load('roles.permisos');
+        return response()->json($user);
+
     }
     function logout(Request $request){
         $request->user()->currentAccessToken()->delete();

@@ -14,7 +14,7 @@ class RolController extends Controller{
         return response()->json($rol, 201);
     }
     function show($id){
-        $rol = Rol::find($id);
+        $rol = Rol::where('id', $id)->with('permisos')->first();
         return response()->json($rol);
     }
     function destroy($id){
@@ -24,5 +24,18 @@ class RolController extends Controller{
             return response()->json(null, 204);
         }
         return response()->json(['message' => 'Rol not found'], 404);
+    }
+    function getRolePermisos($id){
+        $rol = Rol::where('id', $id)->with('permisos')->first();
+        return $rol->permisos;
+    }
+    function assignPermisoToRole(Request $request, $id){
+        $rol = Rol::find($id);
+        if (!$rol) {
+            return response()->json(['message' => 'Rol not found'], 404);
+        }
+        $permisoId = $request->input('permiso_id');
+        $rol->permisos()->attach($permisoId);
+        return response()->json(['message' => 'Permiso assigned to role'], 200);
     }
 }
