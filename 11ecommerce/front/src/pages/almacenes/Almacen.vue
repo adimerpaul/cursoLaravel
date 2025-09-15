@@ -55,7 +55,7 @@ export default {
                     this.fetchAlmacenes(); // Refresh the list after adding
                 })
                 .catch(error => {
-                    console.error("There was an error adding the almacen!", error);
+                    alert(error.response.data.message || "Error adding almacen");
                 });
         },
         async fetchSucursales() {

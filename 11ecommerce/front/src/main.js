@@ -28,6 +28,7 @@ const routes = [
   { path: '/permisos/:id', component: () => import('./pages/permisos/PermisoView.vue') },
 
   { path: '/almacenes', component: () => import('./pages/almacenes/Almacen.vue') },
+  { path: '/ventas', component: () => import('./pages/ventas/Venta.vue') },
 
 ]
 
