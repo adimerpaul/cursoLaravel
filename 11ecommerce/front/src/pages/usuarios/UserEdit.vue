@@ -55,7 +55,7 @@ export default {
     methods: {
         agregarRol() {
             if (this.role) {
-                axios.post(`http://localhost:8000/api/users/${this.$route.params.id}/roles`, { role_id: this.role })
+                axios.post(`http://143.198.70.37:8000/api/users/${this.$route.params.id}/roles`, { role_id: this.role })
                     .then(response => {
                         alert("Rol asignado con éxito");
                         this.fetchRolesUser(); // Refrescar los roles del usuario
@@ -68,7 +68,7 @@ export default {
             }
         },
         fetchRolesUser() {
-            axios.get(`http://localhost:8000/api/users/${this.$route.params.id}/roles`)
+            axios.get(`http://143.198.70.37:8000/api/users/${this.$route.params.id}/roles`)
                 .then(response => {
                     this.user.roles = response.data;
                     // console.log(this.user.roles);
@@ -78,7 +78,7 @@ export default {
                 });
         },
         fetchRoles() {
-            axios.get('http://localhost:8000/api/roles')
+            axios.get('http://143.198.70.37:8000/api/roles')
                 .then(response => {
                     this.roles = response.data;
                 })
@@ -87,7 +87,7 @@ export default {
                 });
         },
         async fetchUserData() {
-            axios.get(`http://localhost:8000/api/users/${this.$route.params.id}`)
+            axios.get(`http://143.198.70.37:8000/api/users/${this.$route.params.id}`)
                 .then(response => {
                     this.user = response.data;
                     // console.log(this.user);
@@ -97,7 +97,7 @@ export default {
                 });
         },
         actualizarUsuario() {
-            axios.put(`http://localhost:8000/api/users/${this.$route.params.id}`, this.user)
+            axios.put(`http://143.198.70.37:8000/api/users/${this.$route.params.id}`, this.user)
                 .then(response => {
                     alert("Usuario actualizado con éxito");
                     this.$router.push('/usuarios');

@@ -43,7 +43,7 @@ export default {
                 alert("Seleccione un permiso para añadir.");
                 return;
             }
-            axios.post(`http://localhost:8000/api/roles/${this.$route.params.id}/permisos`, {
+            axios.post(`http://143.198.70.37:8000/api/roles/${this.$route.params.id}/permisos`, {
                 permiso_id: this.rolePermisoAdd
             })
                 .then(response => {
@@ -56,7 +56,7 @@ export default {
                 });
         },
         async fetchPermisos() {
-            axios.get('http://localhost:8000/api/permisos')
+            axios.get('http://143.198.70.37:8000/api/permisos')
                 .then(response => {
                     this.permisos = response.data;
                 })
@@ -65,7 +65,7 @@ export default {
                 });
         },
         async fetchRolePermisos() {
-            axios.get(`http://localhost:8000/api/roles/${this.$route.params.id}/permisos`)
+            axios.get(`http://143.198.70.37:8000/api/roles/${this.$route.params.id}/permisos`)
                 .then(response => {
                     this.role.permisos = response.data;
                 })
@@ -74,7 +74,7 @@ export default {
                 });
         },
         async fetchRoleData() {
-            axios.get(`http://localhost:8000/api/roles/${this.$route.params.id}`)
+            axios.get(`http://143.198.70.37:8000/api/roles/${this.$route.params.id}`)
                 .then(response => {
                     this.role = response.data;
                     // console.log(this.role);

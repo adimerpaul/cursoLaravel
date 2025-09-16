@@ -29,7 +29,7 @@ export default {
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('http://localhost:8000/api/auth/profile')
+      axios.get('http://143.198.70.37:8000/api/auth/profile')
         .then(response => {
           console.log('User profile:', response.data);
         })
@@ -47,7 +47,7 @@ export default {
       // alert('Has cerrado sesión');
       // this.$router.push('/login');
       if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-        axios.post('http://localhost:8000/api/auth/logout')
+        axios.post('http://143.198.70.37:8000/api/auth/logout')
           .then(() => {
             localStorage.removeItem('token');
             axios.defaults.headers.common['Authorization'] = '';

@@ -19,7 +19,7 @@
                             <td>{{ producto.nombre }}</td>
                             <td>{{ producto.precio_venta_actual }}</td>
                             <td>
-                                <img :src="`http://localhost:8000/imagenes/${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/>
+                                <img :src="`http://143.198.70.37:8000/imagenes/${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/>
                             </td>
                             <td>
                                 <button @click="agregarAlCarrito(producto)">Agregar al Carrito</button>
@@ -93,7 +93,7 @@ export default {
     methods: {
         fetchClientes() {
             const token = localStorage.getItem('token');
-            axios.get('http://localhost:8000/api/clientes', {
+            axios.get('http://143.198.70.37:8000/api/clientes', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -107,7 +107,7 @@ export default {
         },
         fetchProductos() {
             const token = localStorage.getItem('token');
-            axios.get('http://localhost:8000/api/productos?limit=100'+'&page=1&search=', {
+            axios.get('http://143.198.70.37:8000/api/productos?limit=100'+'&page=1&search=', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -145,7 +145,7 @@ export default {
                 })),
                 cliente_id: this.selectedCliente
             };
-            axios.post('http://localhost:8000/api/ventas', ventaData, {
+            axios.post('http://143.198.70.37:8000/api/ventas', ventaData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -44,7 +44,7 @@
         <td>{{ producto.descripcion }}</td>
         <td>{{ producto.precio_venta_actual }}</td>
         <td>
-            <img :src="`http://localhost:8000/imagenes/${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/>
+            <img :src="`http://143.198.70.37:8000/imagenes/${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/>
              <!-- <img :src="`data:image/jpeg;base64,${producto.imagen}`" alt="Imagen del producto" style="max-width: 45px; max-height: 45px;" v-if="producto.imagen"/> -->
         </td>
         <td>{{ producto.categoria.nombre }}</td>
@@ -81,7 +81,7 @@ export default {
     },
     async productosGet() {
       const token = localStorage.getItem('token');
-      axios.get('http://localhost:8000/api/productos?limit=10'+'&page='+this.pagination.currentPage+'&search='+this.search, {
+      axios.get('http://143.198.70.37:8000/api/productos?limit=10'+'&page='+this.pagination.currentPage+'&search='+this.search, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ export default {
     },
     eliminarProducto(id) {
       if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-        axios.delete(`http://localhost:8000/api/productos/${id}`)
+        axios.delete(`http://143.198.70.37:8000/api/productos/${id}`)
           .then(() => {
             this.productosGet();
           })

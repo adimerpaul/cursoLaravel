@@ -28,7 +28,7 @@ export default {
                 nombre: this.nombre,
                 descripcion: this.descripcion
             };
-            axios.post('http://localhost:8000/api/roles', newRol)
+            axios.post('http://143.198.70.37:8000/api/roles', newRol)
                 .then(response => {
                     console.log('Rol creado:', response.data);
                     this.$router.push('/roles');

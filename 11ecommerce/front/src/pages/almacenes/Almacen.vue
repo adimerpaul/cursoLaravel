@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         agregarSucursal() {
-            axios.post('http://localhost:8000/api/almacenes', this.almacen)
+            axios.post('http://143.198.70.37:8000/api/almacenes', this.almacen)
                 .then(response => {
                     this.fetchAlmacenes(); // Refresh the list after adding
                 })
@@ -60,7 +60,7 @@ export default {
         },
         async fetchSucursales() {
             try {
-                const response = await axios.get('http://localhost:8000/api/sucursales');
+                const response = await axios.get('http://143.198.70.37:8000/api/sucursales');
                 this.sucursales = response.data;
             } catch (error) {
                 console.error("Error fetching sucursales:", error);
@@ -68,7 +68,7 @@ export default {
         },
         async fetchAlmacenes() {
             try {
-                const response = await axios.get('http://localhost:8000/api/almacenes');
+                const response = await axios.get('http://143.198.70.37:8000/api/almacenes');
                 this.almacenes = response.data;
             } catch (error) {
                 console.error("Error fetching almacenes:", error);

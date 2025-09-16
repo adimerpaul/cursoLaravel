@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         async createUser() {
-            axios.post('http://localhost:8000/api/users', this.user)
+            axios.post('http://143.198.70.37:8000/api/users', this.user)
                 .then(response => {
                     console.log("User created successfully:", response.data);
                     this.$router.push('/usuarios');

@@ -100,7 +100,7 @@ export default {
     },
     methods: {
         crearCategoria() {
-            axios.post('http://localhost:8000/api/categorias', this.categoria)
+            axios.post('http://143.198.70.37:8000/api/categorias', this.categoria)
                 .then((response) => {
                     console.log('Categoría creada:', response.data);
                     this.categoria.nombre = '';
@@ -116,7 +116,7 @@ export default {
             this.producto.imagen = file;
         },
         async categoriasGet() {
-            axios.get('http://localhost:8000/api/categorias')
+            axios.get('http://143.198.70.37:8000/api/categorias')
                 .then((response) => {
                     this.categorias = response.data;
                 })
@@ -130,7 +130,7 @@ export default {
                 formData.append(key, this.producto[key]);
             }
             formData.append('imagen', this.producto.imagen);
-            axios.post('http://localhost:8000/api/productos', formData, {
+            axios.post('http://143.198.70.37:8000/api/productos', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

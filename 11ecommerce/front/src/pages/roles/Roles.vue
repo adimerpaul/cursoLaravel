@@ -41,7 +41,7 @@ export default {
             this.$router.push('/roles/crear');
         },
         rolesGet() {
-            axios.get('http://localhost:8000/api/roles')
+            axios.get('http://143.198.70.37:8000/api/roles')
                 .then(response => {
                     // console.log('Roles:', response.data);
                     this.roles = response.data;
@@ -51,7 +51,7 @@ export default {
                 });
         },
         eliminar(id) {
-            axios.delete(`http://localhost:8000/api/roles/${id}`)
+            axios.delete(`http://143.198.70.37:8000/api/roles/${id}`)
                 .then(response => {
                     console.log('Rol eliminado:', response.data);
                     this.rolesGet(); // Refresh the list

@@ -40,7 +40,7 @@ export default {
                 action: this.action,
                 detail: this.detail
             };
-            axios.post('http://localhost:8000/api/permisos', newRol)
+            axios.post('http://143.198.70.37:8000/api/permisos', newRol)
                 .then(response => {
                     console.log('Permiso creado:', response.data);
                     this.$router.push('/permisos');

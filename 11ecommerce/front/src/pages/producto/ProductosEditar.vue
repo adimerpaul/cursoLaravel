@@ -77,7 +77,7 @@ export default {
     },
     methods: {
         productoGet() {
-            axios.get(`http://localhost:8000/api/productos/${this.$route.params.id}`)
+            axios.get(`http://143.198.70.37:8000/api/productos/${this.$route.params.id}`)
                 .then((response) => {
                     this.producto = response.data;
                 })
@@ -91,7 +91,7 @@ export default {
             this.producto.imagen = file;
         },
         async categoriasGet() {
-            axios.get('http://localhost:8000/api/categorias')
+            axios.get('http://143.198.70.37:8000/api/categorias')
                 .then((response) => {
                     this.categorias = response.data;
                 })
@@ -111,7 +111,7 @@ export default {
             formData.append('activo', this.producto.activo ? 1 : 0);
             formData.append('categoria_id', this.producto.categoria_id);
 ``
-            axios.post(`http://localhost:8000/api/productos/${this.$route.params.id}`, formData, {
+            axios.post(`http://143.198.70.37:8000/api/productos/${this.$route.params.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

@@ -50,7 +50,7 @@ export default {
     methods: {
         deleteUser(id) {
             if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
-                axios.delete(`http://localhost:8000/api/users/${id}`)
+                axios.delete(`http://143.198.70.37:8000/api/users/${id}`)
                     .then(response => {
                         alert("Usuario eliminado con éxito");
                         this.fetchUsers(); // Refrescar la lista de usuarios
@@ -69,7 +69,7 @@ export default {
                 return;
             }
             const token = localStorage.getItem('token');
-            axios.get('http://localhost:8000/api/users', {
+            axios.get('http://143.198.70.37:8000/api/users', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -54,7 +54,7 @@ export default {
             this.$router.push('/permisos/crear');
         },
         permisosGet() {
-            axios.get('http://localhost:8000/api/permisos')
+            axios.get('http://143.198.70.37:8000/api/permisos')
                 .then(response => {
                     // console.log('permisos:', response.data);
                     this.permisos = response.data;
@@ -64,7 +64,7 @@ export default {
                 });
         },
         eliminar(id) {
-            axios.delete(`http://localhost:8000/api/permisos/${id}`)
+            axios.delete(`http://143.198.70.37:8000/api/permisos/${id}`)
                 .then(response => {
                     console.log('permiso eliminado:', response.data);
                     this.permisosGet(); // Refresh the list

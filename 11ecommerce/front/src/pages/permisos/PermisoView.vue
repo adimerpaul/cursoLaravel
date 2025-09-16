@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         async fetchRoleData() {
-            axios.get(`http://localhost:8000/api/roles/${this.$route.params.id}`)
+            axios.get(`http://143.198.70.37:8000/api/roles/${this.$route.params.id}`)
                 .then(response => {
                     this.role = response.data;
                     // console.log(this.role);

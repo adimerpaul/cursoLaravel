@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         async fetchUserData() {
-            axios.get(`http://localhost:8000/api/users/${this.$route.params.id}`)
+            axios.get(`http://143.198.70.37:8000/api/users/${this.$route.params.id}`)
                 .then(response => {
                     this.user = response.data;
                     // console.log(this.user);
