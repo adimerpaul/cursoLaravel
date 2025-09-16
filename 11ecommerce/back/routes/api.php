@@ -55,6 +55,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/almacenes', [App\Http\Controllers\AlmacenController::class, 'index']);
     Route::post('/almacenes', [App\Http\Controllers\AlmacenController::class, 'store']);
+
+    Route::get('/clientes', [App\Http\Controllers\ClienteController::class, 'index']);
+    Route::post('/ventas', [App\Http\Controllers\NotaController::class, 'store']);
     
 
 });
